@@ -1,0 +1,230 @@
+swagger: '2.0'
+info:
+  title: API Recolhe.eco
+  description: Lista de endpoints disponiveis na API com os recursos e informações sobre pontos de coletas e tipo de material.
+  version: '1.0.0'
+host: localhost
+basePath: /pontosdecoleta/v1
+tags:
+  - name: Pontos de coleta
+security:
+  - client_id: []
+  - access_token: []
+securityDefinitions:
+  client_id:
+    type: apiKey
+    in: header
+    name: client_id
+  access_token:
+    type: apiKey
+    in: header
+    name: access_token
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /pontosdecoleta:
+    get:
+      tags:
+        - Pontos de coleta
+      summary: Obtém o conjunto de pontos de coleta.
+      description: Lista com os pontos de coleta.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Pontos_de_coleta'
+        '400':
+          description: Não há pontos de coletas.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno.
+  /pontosdecoleta/{IdMunicipio}/municipio:      
+    get:
+      tags:
+        - Pontos de coleta
+      summary: Obtém o conjunto de pontos de coleta por Município.
+      description: Lista com os pontos de coleta.
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: IdMunicipio
+          in: path
+          description: ID do município IBGE
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: O ponto de coleta precisa estar previamente cadastrado.
+          required: true
+          schema:
+            $ref: '#/definitions/Pontos_de_coleta'
+      responses:
+        '200':
+          description: Sucesso.
+        '400':
+          description: Município não é válido.
+        '404':
+          description: Município não encontrado.
+        '405':
+          description: Informações fornecidas inválidas.
+          
+  /pontosdecoleta/{IdMunicipio}/municipio/{bairro}/bairro:   
+    get:
+      tags:
+        - Pontos de coleta
+      summary: Obtém o conjunto de pontos de coleta em um bairro.
+      description: Lista com os pontos de coleta.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: IdMunicipio
+        in: path 
+        description: ID do município IBGE
+        required: true
+        type: string
+      - name: bairro
+        in: path 
+        description: Nome do bairro
+        required: true
+        type: string  
+      - in: body
+        name: body
+        description: O ponto de coleta precisa estar previamente cadastrado e o Id do município informado.
+        required: true
+        schema:
+          $ref: '#/definitions/Pontos_de_coleta'
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno.  
+          
+  /pontosdecoleta/{IdMunicipio}/municipio/{cep}/cep:   
+    get:
+      tags:
+        - Pontos de coleta
+      summary: Obtém o conjunto de pontos de coleta em um raio proximo ao CEP informado.
+      description: Lista com os pontos de coleta proximos ao CEP.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: IdMunicipio
+        in: path 
+        description: Id do município IBGE
+        required: true
+        type: string
+      - name: cep
+        in: path 
+        description: CEP do logradouro
+        required: true
+        type: string  
+      - in: body
+        name: body
+        description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e CEP informado.
+        required: true
+        schema:
+          $ref: '#/definitions/Pontos_de_coleta'
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno. 
+  /pontosdecoleta/{IdMunicipio}/municipio/{tipoMaterial}/material:   
+    get:
+      tags:
+        - Pontos de coleta
+      summary: Obtém o conjunto de pontos de coleta em um raio proximo ao CEP informado.
+      description: Lista com os pontos de coleta proximos ao CEP.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: IdMunicipio
+        in: path 
+        description: Id do município IBGE
+        required: true
+        type: string
+      - name: tipoMaterial
+        in: path 
+        description: Tipo de material a ser coletado. (Exemplo - vidro, plastico, eletrônico)
+        required: true
+        type: string  
+      - in: body
+        name: body
+        description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e o tipo de material informados no cadastro.
+        required: true
+        schema:
+          $ref: '#/definitions/Pontos_de_coleta'
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno.           
+definitions:
+  Pontos_de_coleta:
+    type: object
+    properties:
+      idCidade:
+        type: string
+      NomeCid:
+        type: string    
+      Usuario:
+        type: object
+        $ref: '#/definitions/Usuario'
+      TipoMaterial:
+        type: string
+  Usuario:
+    type: object
+    properties:
+      id:
+        type: string
+      nome:
+        type: string
+      CEP:
+        type: string
