@@ -1,0 +1,32 @@
+{
+  "name": "api.recolhe.eco",
+  "version": "1.0.0",
+  "description": "Back-end system for the recolhe.eco social recycling engagement system",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eNove/api.recolhe.eco.git"
+  },
+  "keywords": [
+    "recycling",
+    "nodejs",
+    "echo",
+    "friendly",
+    "sustainability"
+  ],
+  "author": "eNove",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eNove/api.recolhe.eco/issues"
+  },
+  "homepage": "https://github.com/eNove/api.recolhe.eco#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "express": "^4.17.1",
+    "mogoose": "0.0.1-security",
+    "mongoose": "^5.10.9"
+  }
+}
