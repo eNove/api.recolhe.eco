@@ -27,6 +27,7 @@
     "chalk": "^4.1.0",
     "express": "^4.17.1",
     "mogoose": "0.0.1-security",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.9",
+    "swagger-ui-express": "^4.1.4"
   }
 }
