@@ -15,7 +15,7 @@ collectionPointSchema.statics = {
     },
 
     delete_point: function(query, cb) {
-        this.findOneAndDelete(query, cb);
+        this.findOneAndDelete(query, cb, () => {});
     }/**/
 };
 

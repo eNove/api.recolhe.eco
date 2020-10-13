@@ -1,6 +1,6 @@
 var collectionPointsDao = require('../dao/collectionPointDao');
 
-exports.createCollectionPoint = (req, res, next) => {
+exports.create_collection_point = (req, res, next) => {
     var colPoint = {
         name: req.body.name,
         description: req.body.description,
@@ -16,7 +16,7 @@ exports.createCollectionPoint = (req, res, next) => {
     });
 };
 
-exports.getCollectionPoint = (req, res, next) => {
+exports.get_collection_point = (req, res, next) => {
     collectionPointsDao.get_point({name: req.params.name}, (err, colPoint => {
         if(err)
             res.json({ error: err })
@@ -34,7 +34,7 @@ exports.get_all_collectionPoints = (req, res, next) => {
     })
 };
 
-exports.updateCollectionPoint = (req, res, next) => {
+exports.update_collection_point = (req, res, next) => {
     var colPoint = {
         name: req.body.name,
         description: req.body.description,
