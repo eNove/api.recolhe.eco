@@ -5,5 +5,7 @@ Banck-end system for recolhe.eco project, which aims to promote sustainability a
  ## Node version used
 v12.18.0
 
-## How to run locally
-TODO: finish it.
+## to run locally:
+- go to root directory
+- npm install
+- node server.js
