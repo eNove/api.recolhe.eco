@@ -4,7 +4,7 @@ info:
   description: Lista de endpoints disponiveis na API com os recursos e informações sobre pontos de coletas e tipo de material.
   version: '1.0.0'
 host: localhost
-basePath: /api/v1
+basePath: /pontos-de-coleta/v1
 tags:
   - name: Pontos de coleta
 security:
@@ -45,7 +45,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Pontos_de_coleta'
+              $ref: '#/definitions/Pontos-de-coleta'
         '400':
           description: Não há pontos de coletas.
         '401':
@@ -77,7 +77,7 @@ paths:
           description: O ponto de coleta precisa estar previamente cadastrado.
           required: true
           schema:
-            $ref: '#/definitions/Pontos_de_coleta'
+            $ref: '#/definitions/Pontos-endereco'
       responses:
         '200':
           description: Sucesso.
@@ -114,7 +114,7 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município informado.
         required: true
         schema:
-          $ref: '#/definitions/Pontos_de_coleta'
+          $ref: '#/definitions/Pontos-endereco'
       security:
         - client_id: []
         - access_token: []
@@ -154,7 +154,7 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e CEP informado.
         required: true
         schema:
-          $ref: '#/definitions/Pontos_de_coleta'
+          $ref: '#/definitions/Pontos-endereco'
       security:
         - client_id: []
         - access_token: []
@@ -193,7 +193,7 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e o tipo de material informados no cadastro.
         required: true
         schema:
-          $ref: '#/definitions/Pontos_de_coleta'
+          $ref: '#/definitions/Pontos-material'
       security:
         - client_id: []
         - access_token: []
@@ -205,33 +205,160 @@ paths:
         '403':
           description: Ação proibida.
         '500':
-          description: Erro Interno.           
+          description: Erro Interno.
+  /pontos-de-coleta/{id}:   
+    post:
+      tags:
+        - Pontos de coleta
+      summary: Insere o ponto de coleta.
+      description: Grava um ponto de coleta relacionado ao usuário e endereço.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: id
+        in: path 
+        description: Id do ponto a ser cadastrado.
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Necessario informar o id do ponto a ser cadastrado assim como o cep e usuário
+        required: true
+        schema:
+          $ref: '#/definitions/Pontos-de-coleta'
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno.  
+
+    put:
+      tags:
+        - Pontos de coleta
+      summary: Realiza alterações em um ponto de coleta.
+      description: Altera um ponto de coleta.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: id
+        in: path 
+        description: Id do ponto a ser alterado.
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Necessario informar o id do ponto cadastrado assim como o usuário.
+        required: true
+        schema:
+          $ref: '#/definitions/Pontos-endereco'
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno.
+          
+    delete:
+      tags:
+        - Pontos de coleta
+      summary: Exclui o ponto de coleta.
+      description: Exlui o ponto de coleta relacionado ao usuário e endereço.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: id
+        in: path 
+        description: Id do ponto a ser excluido.
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Necessario informar o id do ponto de caoleta assim como o id do usuário.
+        required: true
+        schema:
+          $ref: '#/definitions/Pontos-endereco'
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno.          
 definitions:
-  Pontos_de_coleta:
+  Pontos-de-coleta:  
     type: object
     properties:
-      idCidade:
+      id:
         type: string
-      NomeCid:
+      nome:
         type: string    
-      Usuario:
+      descricao:
+        type: string   
+      cgc:
+        type: string        
+      usuario:
         type: object
         $ref: '#/definitions/Usuario'
-      TipoMaterial:
+      tipoMaterial:
         type: array
-        items:
+        items: 
           type: string
-      localizacao:
+      endereco:
         type: object
-        $ref: '#/definitions/Geo_location'
-      UF:
-        type: "string"
-        description: "Unidade Federativa"
-        enum:
-        - "SP"
-        - "MG"
-        - "RJ"
-        - "..."
+        $ref: '#/definitions/Endereco'    
+  Pontos-endereco:
+    type: object
+    properties:
+      id:
+        type: string
+      nome:
+        type: string    
+      descricao:
+        type: string   
+      cgc:
+        type: string
+      endereco:
+        type: object
+        $ref: '#/definitions/Endereco'    
+  Pontos-material:
+    type: object
+    properties:
+      id:
+        type: string
+      nome:
+        type: string    
+      descricao:
+        type: string   
+      cgc:
+        type: string        
+      tipoMaterial:
+        type: array
+        items: 
+          type: string
   Usuario:
     type: object
     properties:
@@ -239,12 +366,24 @@ definitions:
         type: string
       nome:
         type: string
-      CEP:
+      cel:
+        type: number  
+      idPontoColeta:
         type: string
-  Geo_location:
+  Endereco:
     type: object
     properties:
-      lat:
+      cep:
         type: string
-      long:
+      numero:
+        type: number  
+      logradouro:
         type: string
+      bairro:
+        type: string
+      municipio:
+        type: string 
+      uf:
+        type: string   
+      ibge:
+        type: number
