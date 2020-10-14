@@ -1,0 +1,12 @@
+# for MAC users
+.DS_Store
+
+# ignore node unecessary files/folders
+node_modules/
+build
+npm-debug.log
+.env
+.DS_Store
+
+# for vscode users
+.vscode
