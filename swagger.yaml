@@ -218,7 +218,20 @@ definitions:
         type: object
         $ref: '#/definitions/Usuario'
       TipoMaterial:
-        type: string
+        type: array
+        items:
+          type: string
+      localizacao:
+        type: object
+        $ref: '#/definitions/Geo_location'
+      UF:
+        type: "string"
+        description: "Unidade Federativa"
+        enum:
+        - "SP"
+        - "MG"
+        - "RJ"
+        - "..."
   Usuario:
     type: object
     properties:
@@ -227,4 +240,11 @@ definitions:
       nome:
         type: string
       CEP:
+        type: string
+  Geo_location:
+    type: object
+    properties:
+      lat:
+        type: string
+      long:
         type: string
