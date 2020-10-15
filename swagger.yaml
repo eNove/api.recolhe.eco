@@ -4,7 +4,7 @@ info:
   description: Lista de endpoints disponiveis na API com os recursos e informações sobre pontos de coletas e tipo de material.
   version: '1.0.0'
 host: api.recolhe.eco
-basePath: /api/v1
+basePath: /api/v1/
 tags:
   - name: Pontos de coleta
 security:
@@ -332,7 +332,11 @@ definitions:
         type: string
       endereco:
         type: object
-        $ref: '#/definitions/Endereco'   
+        $ref: '#/definitions/Endereco'
+      tipoMaterial:
+        type: array
+        items:
+          $ref: '#/definitions/material'
   material:
     type: object
     properties:
