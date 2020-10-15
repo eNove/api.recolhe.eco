@@ -5,6 +5,7 @@ const properties = require('./config/properties')
 const db = require('./config/database')
 const port = properties.PORT || 3000;
 const bodyParser = require('body-parser');
+const collectionPoints = require('./models/collectionPointModel');
 
 // swagger
 const swaggerUi = require('swagger-ui-express');

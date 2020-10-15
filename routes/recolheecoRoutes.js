@@ -1,5 +1,8 @@
-var collectionPoints = require('../controllers/collectionPointController');
+var express = require('express');
+var router = express.Router();
 
+var collectionPoints = require('../controllers/collectionPointController');
+/*
 module.exports = (app) => {
     app.route('/pontos-de-coleta')
         .post(collectionPoints.create_collection_point)
@@ -12,4 +15,9 @@ module.exports = (app) => {
         .put(collectionPoints.update_collection_point)
         //.delete(collectionPoints.remove_point);
         //TODO: verificar pq o delete esta dando erro
-}
+        */
+
+    //router.post('/pontos-de-coleta', collectionPoints.create_collection_point)
+    router.get('/pontos-de-coleta', collectionPoints.get_all_collectionPoints)
+
+module.exports = router;

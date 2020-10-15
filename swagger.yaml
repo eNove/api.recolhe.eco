@@ -329,7 +329,7 @@ definitions:
           type: string
       endereco:
         type: object
-        $ref: '#/definitions/Endereco'    
+        $ref: '#/definitions/Pontos-endereco'    
   Pontos-endereco:
     type: object
     properties:
@@ -343,7 +343,10 @@ definitions:
         type: string
       endereco:
         type: object
-        $ref: '#/definitions/Endereco'    
+        $ref: '#/definitions/Endereco'
+      geo_localizacao:
+        type: object
+        $ref: '#/definitions/Geolocalizacao'    
   Pontos-material:
     type: object
     properties:
@@ -387,3 +390,10 @@ definitions:
         type: string   
       ibge:
         type: number
+  Geolocalizacao:
+    type: object
+    properties:
+      lon:
+        type: string
+      lat:
+        type: string
