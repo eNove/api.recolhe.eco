@@ -1,47 +1,4 @@
 const collectionPointSchema = require('../models/collectionPointModel');
+const pontosDeColetaModel = require('../models/pontosDeColetaModel');
 
-
-exports.listPoints = [
-    {
-        name: 'Andrew',
-        description: 'teste do teste',
-        photo_path: './algum lugar',
-        location:{
-            city: 'Jundiaí',
-            UF: 'SP',
-            geo_location: {
-                latitude: '1998213217.0',
-                longitude: '1998213217.5'
-            },
-            country: 'Brasil'
-        }
-    },
-    {
-        name: 'Andrew 2',
-        description: 'teste do teste',
-        photo_path: './algum lugar',
-        location:{
-            city: 'Jundiaí',
-            UF: 'SP',
-            geo_location: {
-                latitude: '1998213217.0',
-                longitude: '1998213217.5'
-            },
-            country: 'Brasil'
-        }
-    },
-    {
-        name: 'Andrew 3',
-        description: 'teste do teste',
-        photo_path: './algum lugar',
-        location:{
-            city: 'Jundiaí',
-            UF: 'SP',
-            geo_location: {
-                latitude: '1998213217.0',
-                longitude: '1998213217.5'
-            },
-            country: 'Brasil'
-        }
-    }
-];
+exports.pontos_de_coleta = pontosDeColetaModel.pontos_de_coleta;
