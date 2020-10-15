@@ -4,7 +4,7 @@ info:
   description: Lista de endpoints disponiveis na API com os recursos e informações sobre pontos de coletas e tipo de material.
   version: '1.0.0'
 host: localhost
-basePath: /pontos-de-coleta/v1
+basePath: /Pontos-de-coleta/v1
 tags:
   - name: Pontos de coleta
 security:
@@ -26,7 +26,7 @@ consumes:
 produces:
   - application/json
 paths:
-  /pontos-de-coleta:
+  /Pontos-de-coleta:
     get:
       tags:
         - Pontos de coleta
@@ -45,7 +45,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Pontos-de-coleta'
+              $ref: '#/definitions/Ponto-de-coleta'
         '400':
           description: Não há pontos de coletas.
         '401':
@@ -54,7 +54,7 @@ paths:
           description: Ação proibida.
         '500':
           description: Erro Interno.
-  /pontos-de-coleta/{IdMunicipio}/municipio:      
+  /Pontos-de-coleta/{IdMunicipio}/municipio:      
     get:
       tags:
         - Pontos de coleta
@@ -77,7 +77,7 @@ paths:
           description: O ponto de coleta precisa estar previamente cadastrado.
           required: true
           schema:
-            $ref: '#/definitions/Pontos-endereco'
+            $ref: '#/definitions/Endereco'
       responses:
         '200':
           description: Sucesso.
@@ -88,7 +88,7 @@ paths:
         '405':
           description: Informações fornecidas inválidas.
           
-  /pontos-de-coleta/{IdMunicipio}/municipio/{bairro}/bairro:   
+  /Pontos-de-coleta/{IdMunicipio}/municipio/{bairro}/bairro:   
     get:
       tags:
         - Pontos de coleta
@@ -114,7 +114,7 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município informado.
         required: true
         schema:
-          $ref: '#/definitions/Pontos-endereco'
+          $ref: '#/definitions/Endereco'
       security:
         - client_id: []
         - access_token: []
@@ -128,7 +128,7 @@ paths:
         '500':
           description: Erro Interno.  
           
-  /pontos-de-coleta/{IdMunicipio}/municipio/{cep}/cep:   
+  /Pontos-de-coleta/{IdMunicipio}/municipio/{cep}/cep:   
     get:
       tags:
         - Pontos de coleta
@@ -154,7 +154,7 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e CEP informado.
         required: true
         schema:
-          $ref: '#/definitions/Pontos-endereco'
+          $ref: '#/definitions/Endereco'
       security:
         - client_id: []
         - access_token: []
@@ -167,7 +167,7 @@ paths:
           description: Ação proibida.
         '500':
           description: Erro Interno. 
-  /pontos-de-coleta/{IdMunicipio}/municipio/{tipoMaterial}/material:   
+  /Pontos-de-coleta/{IdMunicipio}/municipio/{tipoMaterial}/material:   
     get:
       tags:
         - Pontos de coleta
@@ -193,7 +193,7 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e o tipo de material informados no cadastro.
         required: true
         schema:
-          $ref: '#/definitions/Pontos-material'
+          $ref: '#/definitions/material'
       security:
         - client_id: []
         - access_token: []
@@ -206,7 +206,7 @@ paths:
           description: Ação proibida.
         '500':
           description: Erro Interno.
-  /pontos-de-coleta/{id}:   
+  /Pontos-de-coleta/{id}:   
     post:
       tags:
         - Pontos de coleta
@@ -227,7 +227,7 @@ paths:
         description: Necessario informar o id do ponto a ser cadastrado assim como o cep e usuário
         required: true
         schema:
-          $ref: '#/definitions/Pontos-de-coleta'
+          $ref: '#/definitions/Ponto-de-coleta'
       security:
         - client_id: []
         - access_token: []
@@ -261,7 +261,7 @@ paths:
         description: Necessario informar o id do ponto cadastrado assim como o usuário.
         required: true
         schema:
-          $ref: '#/definitions/Pontos-endereco'
+          $ref: '#/definitions/Endereco'
       security:
         - client_id: []
         - access_token: []
@@ -295,7 +295,7 @@ paths:
         description: Necessario informar o id do ponto de caoleta assim como o id do usuário.
         required: true
         schema:
-          $ref: '#/definitions/Pontos-endereco'
+          $ref: '#/definitions/Endereco'
       security:
         - client_id: []
         - access_token: []
@@ -309,7 +309,7 @@ paths:
         '500':
           description: Erro Interno.          
 definitions:
-  Pontos-de-coleta:  
+  Ponto-de-coleta:  
     type: object
     properties:
       id:
@@ -317,20 +317,19 @@ definitions:
       nome:
         type: string    
       descricao:
-        type: string   
-      cgc:
-        type: string        
+        type: string
       usuario:
         type: object
         $ref: '#/definitions/Usuario'
       tipoMaterial:
         type: array
         items: 
-          type: string
+          type: object
+          $ref: '#/definitions/material'
       endereco:
         type: object
-        $ref: '#/definitions/Pontos-endereco'    
-  Pontos-endereco:
+        $ref: '#/definitions/Endereco'   
+  material:
     type: object
     properties:
       id:
@@ -338,30 +337,7 @@ definitions:
       nome:
         type: string    
       descricao:
-        type: string   
-      cgc:
         type: string
-      endereco:
-        type: object
-        $ref: '#/definitions/Endereco'
-      geo_localizacao:
-        type: object
-        $ref: '#/definitions/Geolocalizacao'    
-  Pontos-material:
-    type: object
-    properties:
-      id:
-        type: string
-      nome:
-        type: string    
-      descricao:
-        type: string   
-      cgc:
-        type: string        
-      tipoMaterial:
-        type: array
-        items: 
-          type: string
   Usuario:
     type: object
     properties:
@@ -370,8 +346,8 @@ definitions:
       nome:
         type: string
       cel:
-        type: number  
-      idPontoColeta:
+        type: number
+      cgc:
         type: string
   Endereco:
     type: object
@@ -390,10 +366,13 @@ definitions:
         type: string   
       ibge:
         type: number
+      geolocalizacao:
+        type: object
+        $ref: '#/definitions/Geolocalizacao'
   Geolocalizacao:
     type: object
     properties:
-      lon:
+      longitude:
         type: string
-      lat:
+      latitude:
         type: string
