@@ -4,7 +4,7 @@ info:
   description: Lista de endpoints disponiveis na API com os recursos e informações sobre pontos de coletas e tipo de material.
   version: '1.0.0'
 host: api.recolhe.eco
-basePath: /pontos-de-coleta/v1
+basePath: /api/v1
 tags:
   - name: Pontos de coleta
 security:
@@ -20,6 +20,7 @@ securityDefinitions:
     in: header
     name: access_token
 schemes:
+  - http
   - https
 consumes:
   - application/json
