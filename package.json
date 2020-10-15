@@ -4,7 +4,10 @@
   "description": "Back-end system for the recolhe.eco social recycling engagement system",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "image-build": "docker build -t recolheeco/api:latest .",
+    "image-push": "docker push recolheeco/api:latest",
+    "deploy": "npm run image-build && npm run image-push"
   },
   "repository": {
     "type": "git",
