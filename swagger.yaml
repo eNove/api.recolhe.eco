@@ -3,7 +3,7 @@ info:
   title: API Recolhe.eco
   description: Lista de endpoints disponiveis na API com os recursos e informações sobre pontos de coletas e tipo de material.
   version: '1.0.0'
-host: http://api.recolhe.eco
+host: api.recolhe.eco
 basePath: /pontos-de-coleta/v1
 tags:
   - name: Pontos de coleta
