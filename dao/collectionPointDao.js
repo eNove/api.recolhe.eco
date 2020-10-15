@@ -1,22 +1,47 @@
-const mongoose = require('mongoose');
 const collectionPointSchema = require('../models/collectionPointModel');
 
-collectionPointSchema.statics = {
-    create_point: function(data, cb) {
-        (new this(data)).save(cb);
+
+exports.listPoints = [
+    {
+        name: 'Andrew',
+        description: 'teste do teste',
+        photo_path: './algum lugar',
+        location:{
+            city: 'Jundiaí',
+            UF: 'SP',
+            geo_location: {
+                latitude: '1998213217.0',
+                longitude: '1998213217.5'
+            },
+            country: 'Brasil'
+        }
     },
-
-    get_point: function(query, cb) {
-        this.find(query, cb);
+    {
+        name: 'Andrew 2',
+        description: 'teste do teste',
+        photo_path: './algum lugar',
+        location:{
+            city: 'Jundiaí',
+            UF: 'SP',
+            geo_location: {
+                latitude: '1998213217.0',
+                longitude: '1998213217.5'
+            },
+            country: 'Brasil'
+        }
     },
-
-    update_point: function(query, updatedata, cb) {
-        this.findOneAndUpdate(query, {$set: updateData}, {new: true}, cb);
-    },
-
-    delete_point: function(query, cb) {
-        this.findOneAndDelete(query, cb, () => {});
-    }/**/
-};
-
-module.exports = mongoose.model('collectionPoints', collectionPointSchema);
+    {
+        name: 'Andrew 3',
+        description: 'teste do teste',
+        photo_path: './algum lugar',
+        location:{
+            city: 'Jundiaí',
+            UF: 'SP',
+            geo_location: {
+                latitude: '1998213217.0',
+                longitude: '1998213217.5'
+            },
+            country: 'Brasil'
+        }
+    }
+];

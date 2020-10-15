@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const properties = require('./config/properties')
-const db = require('./config/database')
+//const db = require('./config/database')
 const port = properties.PORT || 3000;
 const bodyParser = require('body-parser');
 
@@ -17,7 +17,7 @@ var bodyParserJSON = bodyParser.json();
 var bodyParserURLEncoded = bodyParser.urlencoded({extended:true});
 var router = express.Router();
 
-db();
+//db();
 
 // middleware
 app.use(bodyParserJSON);
