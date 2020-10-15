@@ -54,7 +54,7 @@ paths:
           description: Ação proibida.
         '500':
           description: Erro Interno.
-  /Pontos-de-coleta/{IdMunicipio}/municipio:      
+  /Pontos-de-coleta/municipio/{IdMunicipio}:      
     get:
       tags:
         - Pontos de coleta
@@ -77,7 +77,9 @@ paths:
           description: O ponto de coleta precisa estar previamente cadastrado.
           required: true
           schema:
-            $ref: '#/definitions/Endereco'
+            type: array
+            items:
+              $ref: '#/definitions/Ponto-de-coleta'
       responses:
         '200':
           description: Sucesso.
@@ -87,48 +89,7 @@ paths:
           description: Município não encontrado.
         '405':
           description: Informações fornecidas inválidas.
-          
-  /Pontos-de-coleta/{IdMunicipio}/municipio/{bairro}/bairro:   
-    get:
-      tags:
-        - Pontos de coleta
-      summary: Obtém o conjunto de pontos de coleta em um bairro.
-      description: Lista com os pontos de coleta.
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-      - name: IdMunicipio
-        in: path 
-        description: ID do município IBGE
-        required: true
-        type: string
-      - name: bairro
-        in: path 
-        description: Nome do bairro
-        required: true
-        type: string  
-      - in: body
-        name: body
-        description: O ponto de coleta precisa estar previamente cadastrado e o Id do município informado.
-        required: true
-        schema:
-          $ref: '#/definitions/Endereco'
-      security:
-        - client_id: []
-        - access_token: []
-      responses:
-        '200':
-          description: Sucesso.
-        '401':
-          description: Não autorizado.
-        '403':
-          description: Ação proibida.
-        '500':
-          description: Erro Interno.  
-          
-  /Pontos-de-coleta/{IdMunicipio}/municipio/{cep}/cep:   
+  /Pontos-de-coleta/municipio/{IdMunicipio}/cep/{cep}:   
     get:
       tags:
         - Pontos de coleta
@@ -154,7 +115,9 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e CEP informado.
         required: true
         schema:
-          $ref: '#/definitions/Endereco'
+          type: array
+          items:
+            $ref: '#/definitions/Ponto-de-coleta'
       security:
         - client_id: []
         - access_token: []
@@ -167,7 +130,7 @@ paths:
           description: Ação proibida.
         '500':
           description: Erro Interno. 
-  /Pontos-de-coleta/{IdMunicipio}/municipio/{tipoMaterial}/material:   
+  /Pontos-de-coleta/municipio/{IdMunicipio}/material/{tipoMaterial}:   
     get:
       tags:
         - Pontos de coleta
@@ -193,7 +156,7 @@ paths:
         description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e o tipo de material informados no cadastro.
         required: true
         schema:
-          $ref: '#/definitions/material'
+          $ref: '#/definitions/Ponto-de-coleta'
       security:
         - client_id: []
         - access_token: []
@@ -206,7 +169,40 @@ paths:
           description: Ação proibida.
         '500':
           description: Erro Interno.
-  /Pontos-de-coleta/{id}:   
+  /Pontos-de-coleta/{id}:
+    get:
+      tags:
+        - Pontos de coleta
+      summary: Obtém o conjunto de pontos de coleta.
+      description: Lista com os pontos de coleta.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: id
+        in: path 
+        description: Id do ponto a ser cadastrado.
+        required: true
+        type: string
+      security:
+        - client_id: []
+        - access_token: []
+      responses:
+        '200':
+          description: Sucesso.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Ponto-de-coleta'
+        '400':
+          description: Não há pontos de coletas com o id enviado.
+        '401':
+          description: Não autorizado.
+        '403':
+          description: Ação proibida.
+        '500':
+          description: Erro Interno.
     post:
       tags:
         - Pontos de coleta
@@ -261,7 +257,7 @@ paths:
         description: Necessario informar o id do ponto cadastrado assim como o usuário.
         required: true
         schema:
-          $ref: '#/definitions/Endereco'
+          $ref: '#/definitions/Ponto-de-coleta'
       security:
         - client_id: []
         - access_token: []
@@ -295,7 +291,7 @@ paths:
         description: Necessario informar o id do ponto de caoleta assim como o id do usuário.
         required: true
         schema:
-          $ref: '#/definitions/Endereco'
+          $ref: '#/definitions/Ponto-de-coleta'
       security:
         - client_id: []
         - access_token: []
@@ -309,6 +305,22 @@ paths:
         '500':
           description: Erro Interno.          
 definitions:
+  Coleta:
+   type: object
+   properties:
+    id:
+      type: string
+    usuario:
+        type: object
+        $ref: '#/definitions/Usuario'
+    ponto-de-coleta:
+        type: object
+        $ref: '#/definitions/Ponto-de-coleta'
+    tipoMaterial:
+        type: array
+        items: 
+          type: object
+          $ref: '#/definitions/material'
   Ponto-de-coleta:  
     type: object
     properties:
@@ -318,14 +330,6 @@ definitions:
         type: string    
       descricao:
         type: string
-      usuario:
-        type: object
-        $ref: '#/definitions/Usuario'
-      tipoMaterial:
-        type: array
-        items: 
-          type: object
-          $ref: '#/definitions/material'
       endereco:
         type: object
         $ref: '#/definitions/Endereco'   
