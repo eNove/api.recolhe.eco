@@ -1,9 +1,9 @@
 var collectionPoints = require('../controllers/collectionPointController');
 
-module.exports = (app) => {
-    app.route('/lista-points')
-        .get(collectionPoints.get_all_collectionPoints);
+module.exports = (router) => {
 
-    app.route('/pontos-de-coleta')
-        .get(collectionPoints.get_all_pontos_de_coleta);
+    router.get('/pontos-de-coleta', collectionPoints.get_all_pontos_de_coleta);
+    router.get('/pontos-de-coleta/:id', collectionPoints.get_all_pontos_de_coleta);
+    router.get('/pontos-de-coleta/municipio/:ibge', collectionPoints.get_pontos_by_ibge);
+    router.get('/pontos-de-coleta/municipio/:ibge/cep/:cep', collectionPoints.get_pontos_by_ibge_cep);
 }
