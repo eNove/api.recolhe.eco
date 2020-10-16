@@ -72,14 +72,6 @@ paths:
           description: ID do município IBGE
           required: true
           type: string
-        - in: body
-          name: body
-          description: O ponto de coleta precisa estar previamente cadastrado.
-          required: true
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Ponto-de-coleta'
       responses:
         '200':
           description: Sucesso.
@@ -110,14 +102,6 @@ paths:
         description: CEP do logradouro
         required: true
         type: string  
-      - in: body
-        name: body
-        description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e CEP informado.
-        required: true
-        schema:
-          type: array
-          items:
-            $ref: '#/definitions/Ponto-de-coleta'
       security:
         - client_id: []
         - access_token: []
@@ -134,8 +118,8 @@ paths:
     get:
       tags:
         - Pontos de coleta
-      summary: Obtém o conjunto de pontos de coleta em um raio proximo ao CEP informado.
-      description: Lista com os pontos de coleta proximos ao CEP.
+      summary: Obtém o conjunto de pontos de coleta na cidade informada por tipo de material.
+      description: Obtém o conjunto de pontos de coleta na cidade informada por tipo de material.
       consumes:
         - application/json
       produces:
@@ -148,15 +132,9 @@ paths:
         type: string
       - name: tipoMaterial
         in: path 
-        description: Tipo de material a ser coletado. (Exemplo - vidro, plastico, eletrônico)
+        description: Tipo de material a ser coletado. 001 - plastico, 002 - metal, 003 - vidro, 004 - papel, 005 - pilhas/baterias, 006 - eletronicos, 007 - papelao, 008 - isopor
         required: true
         type: string  
-      - in: body
-        name: body
-        description: O ponto de coleta precisa estar previamente cadastrado e o Id do município e o tipo de material informados no cadastro.
-        required: true
-        schema:
-          $ref: '#/definitions/Ponto-de-coleta'
       security:
         - client_id: []
         - access_token: []
