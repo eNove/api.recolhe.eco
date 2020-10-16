@@ -381,6 +381,6 @@ definitions:
     type: object
     properties:
       longitude:
-        type: string
+        type: number
       latitude:
-        type: string
+        type: number

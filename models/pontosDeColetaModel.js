@@ -12,8 +12,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3525904,
             geolocalizacao: {
-                longitude: '-23.2222785',
-                latitude: '-46.887521,17'
+                longitude: -23.2222785,
+                latitude: -46.887521
             },
         },
             tipoMaterial: [
@@ -37,8 +37,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3525904,
             geolocalizacao: {
-                longitude: '-23.1768072',
-                latitude: '-46.8934897,17'
+                longitude: -23.1768072,
+                latitude: -46.8934897
             },
         },
         tipoMaterial: [
@@ -67,8 +67,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3525904,
             geolocalizacao: {
-                longitude: '-23.564583',
-                latitude: '-46.601944'
+                longitude: -23.564583,
+                latitude: -46.601944
             },
         },
         tipoMaterial: [
@@ -97,8 +97,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3550308,
             geolocalizacao: {
-                longitude: '-23.5708579',
-                latitude: '-46.6489176,17'
+                longitude: -23.5708579,
+                latitude: -46.6489176
             },
         },
         tipoMaterial: [
@@ -123,8 +123,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3550308,
             geolocalizacao: {
-                longitude: '-23.5847501',
-                latitude: '-46.5315257,17'
+                longitude: -23.5847501,
+                latitude: -46.5315257
             },
         },
         tipoMaterial: [
@@ -149,8 +149,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3550308,
             geolocalizacao: {
-                longitude: '-23.4780389',
-                latitude: '-46.6560907,17'
+                longitude: -23.4780389,
+                latitude: -46.6560907
             },
         },
         tipoMaterial: [
@@ -174,8 +174,8 @@ exports.pontos_de_coleta = [
             uf: 'RJ',
             ibge: 3303302,
             geolocalizacao: {
-                longitude: '-22.9057186',
-                latitude: '-43.1063415,17'
+                longitude: -22.9057186,
+                latitude: -43.1063415
             }
         }, 
         tipoMaterial: [
@@ -199,8 +199,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3503307,
             geolocalizacao: {
-                longitude: '-22.3726114',
-                latitude: '-47.4036535,17'
+                longitude: -22.3726114,
+                latitude: -47.4036535
             }
         }, 
         tipoMaterial: [
@@ -224,8 +224,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3501905,
             geolocalizacao: {
-                longitude: '-22.7129338',
-                latitude: '-46.8064885,17'
+                longitude: -22.7129338,
+                latitude: -46.8064885
             }
         }, 
         tipoMaterial: [
@@ -249,8 +249,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3504107,
             geolocalizacao: {
-                longitude: '-23.1109022',
-                latitude: '-46.5609173,17'
+                longitude: -23.1109022,
+                latitude: -46.5609173
             }
         }, 
         tipoMaterial: [
@@ -274,8 +274,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.9678581',
-                latitude: '-47.1155356,17'
+                longitude: -22.9678581,
+                latitude: -47.1155356
             }
         }, 
         tipoMaterial: [
@@ -299,8 +299,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.8521829',
-                latitude: '-47.0762686,17'
+                longitude: -22.8521829,
+                latitude: -47.0762686
             }
         }, 
         tipoMaterial: [
@@ -324,8 +324,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-23.0282446',
-                latitude: '-47.1206415,17'
+                longitude: -23.0282446,
+                latitude: -47.1206415
             }
         }, 
         tipoMaterial: [
@@ -369,8 +369,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.9219829',
-                latitude: '-47.0664131,18'
+                longitude: -22.9219829,
+                latitude: -47.0664131
             }
         }, 
         tipoMaterial: [
@@ -399,8 +399,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.9726966',
-                latitude: '-47.1453779,15'
+                longitude: -22.9726966,
+                latitude: -47.1453779
             }
         }, 
         tipoMaterial: [
@@ -429,8 +429,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.8898786,',
-                latitude: '-47.0508704,14'
+                longitude: -22.8898786,
+                latitude: -47.0508704
             }
         }, 
         tipoMaterial: [
@@ -459,8 +459,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.90752',
-                latitude: '-47.0874797,17'
+                longitude: -22.90752,
+                latitude: -47.0874797
             }
         }, 
         tipoMaterial: [
@@ -484,8 +484,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.8559466',
-                latitude: '-47.1074614,17'
+                longitude: -22.8559466,
+                latitude: -47.1074614
             }
         }, 
         tipoMaterial: [
@@ -509,8 +509,8 @@ exports.pontos_de_coleta = [
             uf: 'SP',
             ibge: 3509502,
             geolocalizacao: {
-                longitude: '-22.8572626',
-                latitude: '-47.1070427,17'
+                longitude: -22.8572626,
+                latitude: -47.1070427
             }
         }, 
         tipoMaterial: [
